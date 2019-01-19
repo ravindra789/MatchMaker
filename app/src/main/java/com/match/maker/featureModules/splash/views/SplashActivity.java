@@ -37,7 +37,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
 
-       splashActivityComponent = DaggerSplashActivityComponent.builder()
+        splashActivityComponent = DaggerSplashActivityComponent.builder()
                 .applicationComponent(((MatchMakerApplication) getApplication()).getApplicationComponent())
                 .splashActivityModule(new SplashActivityModule())
                 .build();
@@ -60,23 +60,18 @@ public class SplashActivity extends AppCompatActivity {
     private void checkLoginStatus() {
 
         if (prefs.isFirstTimeLogin()) {
-
             Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             startActivity(intent);
             finish();
-
         } else {
-
             Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
             overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             startActivity(intent);
             finish();
-
         }
 
     }
-
 
 
 }

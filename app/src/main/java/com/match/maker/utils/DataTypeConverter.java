@@ -17,12 +17,14 @@ import java.util.List;
 public class DataTypeConverter {
 
     private static Gson gson = new Gson();
+
     @TypeConverter
     public static List<Result> stringToResultList(String data) {
         if (data == null) {
             return Collections.emptyList();
         }
-        Type listType = new TypeToken<List<Result>>() {}.getType();
+        Type listType = new TypeToken<List<Result>>() {
+        }.getType();
 
         return gson.fromJson(data, listType);
     }
@@ -32,7 +34,8 @@ public class DataTypeConverter {
         if (data == null) {
             return null;
         }
-        Type listType = new TypeToken<Info>() {}.getType();
+        Type listType = new TypeToken<Info>() {
+        }.getType();
 
         return gson.fromJson(data, listType);
     }

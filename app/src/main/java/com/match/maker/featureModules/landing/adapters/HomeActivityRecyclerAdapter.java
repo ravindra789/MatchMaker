@@ -47,14 +47,14 @@ public class HomeActivityRecyclerAdapter extends RecyclerView.Adapter<HomeActivi
 
         Result data = results.get(position);
 
-        if(data != null){
+        if (data != null) {
 
-            if(data.getRegistered().getAge() == 0){
+            if (data.getRegistered().getAge() == 0) {
                 holder.binding.txtCardTime.setText("Moments Ago.");
-            }else if(data.getRegistered().getAge() < 5) {
+            } else if (data.getRegistered().getAge() < 5) {
                 holder.binding.txtCardTime.setText("Few Hours Ago.");
-            }else {
-                holder.binding.txtCardTime.setText(""+data.getRegistered().getAge() + " Hours Ago.");
+            } else {
+                holder.binding.txtCardTime.setText("" + data.getRegistered().getAge() + " Hours Ago.");
             }
 
             String tempTitle = data.getName().getTitle();
@@ -66,18 +66,18 @@ public class HomeActivityRecyclerAdapter extends RecyclerView.Adapter<HomeActivi
             String tempLastName = data.getName().getLast();
             String LastName = tempLastName.substring(0, 1).toUpperCase() + tempLastName.substring(1);
 
-            holder.binding.txtUserName.setText(title + " " +FirstName + " "+LastName);
+            holder.binding.txtUserName.setText(title + " " + FirstName + " " + LastName);
 
 
             String gender;
-            if(data.getGender().equalsIgnoreCase("male")){
+            if (data.getGender().equalsIgnoreCase("male")) {
                 gender = "Male";
-            }else {
+            } else {
                 gender = "Female";
             }
-            holder.binding.txtUserPersonalDescription.setText(""+gender + ", "+data.getDob().getAge() + " Years");
+            holder.binding.txtUserPersonalDescription.setText("" + gender + ", " + data.getDob().getAge() + " Years");
 
-            holder.binding.txtUserProfessionalDescription.setText(""+data.getLocation().getCity() + ", "+data.getLocation().getState());
+            holder.binding.txtUserProfessionalDescription.setText("" + data.getLocation().getCity() + ", " + data.getLocation().getState());
 
 
             RequestOptions requestOptions = new RequestOptions();
@@ -108,14 +108,14 @@ public class HomeActivityRecyclerAdapter extends RecyclerView.Adapter<HomeActivi
 
     }
 
-    public void updateData(List<Result> results){
+    public void updateData(List<Result> results) {
         this.results = results;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        if(results != null && results.size() > 0){
+        if (results != null && results.size() > 0) {
             return results.size();
         }
         return 0;
@@ -123,9 +123,9 @@ public class HomeActivityRecyclerAdapter extends RecyclerView.Adapter<HomeActivi
 
     void deleteItem(int index, CardView cardView, int calledFrom) {
 
-        if(calledFrom == 0){
+        if (calledFrom == 0) {
             animationUtil.animateSlideRight(cardView);
-        }else {
+        } else {
             animationUtil.animateSlideLeft(cardView);
         }
 

@@ -31,23 +31,25 @@ public class HomeActivityViewModel extends AndroidViewModel {
     }
 
     // get matches result
-    public void getAllMatches(int count){
-         repository.getAllMatches(count, allMatchesData, allMatchesDataError);
+    public void getAllMatches(int count) {
+        repository.getAllMatches(count, allMatchesData, allMatchesDataError);
     }
+
     public MutableLiveData<MatchingUsersTable> getAllMatchesData() {
         return allMatchesData;
     }
+
     public MutableLiveData<Throwable> getAllMatchesDataError() {
         return allMatchesDataError;
     }
 
     //
-    public LiveData<MatchingUsersTable> getDataFromDb(){
-       return repository.getMatchingDataFromDb();
+    public LiveData<MatchingUsersTable> getDataFromDb() {
+        return repository.getMatchingDataFromDb();
     }
 
     //
-    public LiveData<Integer> getDbDataCount(){
+    public LiveData<Integer> getDbDataCount() {
         return repository.getMatchingDataDbCount();
     }
 

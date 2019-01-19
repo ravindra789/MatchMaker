@@ -12,13 +12,17 @@ import com.match.maker.di.module.ApplicationModule;
  */
 public class MatchMakerApplication extends MultiDexApplication {
 
+    private static MatchMakerApplication applicationContext;
+
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
-    private static MatchMakerApplication applicationContext;
     private ApplicationComponent mApplicationComponent;
 
+    public static MatchMakerApplication app() {
+        return applicationContext;
+    }
 
     @Override
     public void onCreate() {
@@ -27,10 +31,6 @@ public class MatchMakerApplication extends MultiDexApplication {
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
-    }
-
-    public static MatchMakerApplication app() {
-        return applicationContext;
     }
 
     public ApplicationComponent getApplicationComponent() {

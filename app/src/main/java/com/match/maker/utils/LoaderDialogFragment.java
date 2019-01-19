@@ -38,6 +38,8 @@ public class LoaderDialogFragment extends DialogFragment {
         binding = FragmentLoaderBinding.inflate(LayoutInflater.from(getActivity()));
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.transparent)));
         setCancelable(false);
+
+
         return binding.getRoot();
     }
 

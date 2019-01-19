@@ -14,4 +14,5 @@ public interface HomeActivityRestApi {
     @GET("/api/")
     Call<MatchingUsersTable> getAllMatchesDynamic(@Query("results") String count);
 
+
 }

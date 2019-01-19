@@ -22,7 +22,6 @@ public class Util {
                 }
             }
         }
-
         return instance;
     }
 
@@ -43,7 +42,6 @@ public class Util {
     }
 
     public void dismissLoadingDialog() {
-        //Fragment prev = fragmentActivity.getSupportFragmentManager().findFragmentByTag("dialog");
         if (loaderDialogFragment != null) {
             loaderDialogFragment.dismissAllowingStateLoss();
         }

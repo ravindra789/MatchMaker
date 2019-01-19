@@ -58,13 +58,12 @@ public class HomeActivity extends AppCompatActivity {
         homeActivityComponent.inject(viewModel);
 
         binding.toolbar.setTitle("Home");
-        binding.toolbar.setTitleTextAppearance(this,  R.style.WhiteToolBarTitleMedium);
+        binding.toolbar.setTitleTextAppearance(this, R.style.WhiteToolBarTitleMedium);
         setSupportActionBar(binding.toolbar);
 
         prefs.setFirstTimeLogin(false);
 
         util.showLoadingDialog(this);
-
 
         setAdapter();
         setObservers();
@@ -72,7 +71,6 @@ public class HomeActivity extends AppCompatActivity {
 
 
         viewModel.getAllMatches(50);
-
 
 
     }
@@ -140,16 +138,16 @@ public class HomeActivity extends AppCompatActivity {
 
     private void allMatchesDataSuccess() {
 
-       viewModel.getAllMatchesData().observe(this, new Observer<MatchingUsersTable>() {
-           @Override
-           public void onChanged(@Nullable MatchingUsersTable matchingUsersResponse) {
-               binding.txtNoData.setVisibility(View.GONE);
-               binding.recyclerView.setVisibility(View.VISIBLE);
-               binding.pullToRefresh.setRefreshing(false);
-               util.dismissLoadingDialog();
-               updateData(matchingUsersResponse);
-           }
-       });
+        viewModel.getAllMatchesData().observe(this, new Observer<MatchingUsersTable>() {
+            @Override
+            public void onChanged(@Nullable MatchingUsersTable matchingUsersResponse) {
+                binding.txtNoData.setVisibility(View.GONE);
+                binding.recyclerView.setVisibility(View.VISIBLE);
+                binding.pullToRefresh.setRefreshing(false);
+                util.dismissLoadingDialog();
+                updateData(matchingUsersResponse);
+            }
+        });
 
     }
 

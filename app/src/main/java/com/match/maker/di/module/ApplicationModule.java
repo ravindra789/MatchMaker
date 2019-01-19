@@ -33,6 +33,7 @@ public class ApplicationModule {
     private final Context mContext;
     private final int TIME_OUT_DURATION = 60;
 
+
     public ApplicationModule(Application context) {
         mContext = context;
     }

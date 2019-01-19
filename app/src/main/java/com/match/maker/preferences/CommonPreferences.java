@@ -18,8 +18,7 @@ public class CommonPreferences {
 
     private boolean isFirstTimeLogin = true;
 
-    public CommonPreferences() {
-    }
+    public CommonPreferences() {}
 
     public static CommonPreferences getInstance() {
         if (instance == null) {
@@ -39,7 +38,6 @@ public class CommonPreferences {
         editor = pref.edit();
 
         isFirstTimeLogin = pref.getBoolean(WSConstants.Preferences.PROPERTY_FIRST_TIME, true);
-
 
 
     }

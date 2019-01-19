@@ -31,14 +31,11 @@ public class HomeActivityModule {
 
     @Provides
     @UserScope
-    HomeActivityRepository provideHomeActivityRepository(HomeActivityRestApi homeActivityRestApi, Util util , Context context, CommonPreferences prefs,
-                                                         MatchMakerDatabase db){
-
+    HomeActivityRepository provideHomeActivityRepository(HomeActivityRestApi homeActivityRestApi, Util util, Context context, CommonPreferences prefs,
+                                                         MatchMakerDatabase db) {
         HomeActivityRepository homeActivityRepository = HomeActivityRepository.getInstance();
         homeActivityRepository.setVariables(homeActivityRestApi, util, context, prefs, db);
-
         return homeActivityRepository;
-
     }
 
 

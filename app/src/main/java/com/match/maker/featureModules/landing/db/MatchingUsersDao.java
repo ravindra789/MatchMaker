@@ -20,6 +20,7 @@ public interface MatchingUsersDao {
     @Query("SELECT * FROM matching_user_table")
     LiveData<MatchingUsersTable> getMatchingUsersData();
 
+
     @Query("SELECT COUNT(results) FROM matching_user_table")
     LiveData<Integer> getMatchingUsersDataCount();
 

@@ -21,7 +21,6 @@ import java.util.List;
 @Entity(tableName = "matching_user_table")
 public class MatchingUsersTable {
 
-
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "id")

@@ -24,12 +24,16 @@ public interface ApplicationComponent {
 
     @Named("WithoutHeaders")
     Retrofit provideRetrofitWithoutHeaders();
-    Context providesContext();
-    CommonPreferences providesSharedPreferences();
-    Util provideUtility();
-    AnimationUtil provideAnimation();
-    MatchMakerDatabase provideAppDatabase();
 
+    Context providesContext();
+
+    CommonPreferences providesSharedPreferences();
+
+    Util provideUtility();
+
+    AnimationUtil provideAnimation();
+
+    MatchMakerDatabase provideAppDatabase();
 
 
 }

@@ -11,77 +11,77 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_height"
-            app:layout_collapseMode="pin"
-            android:background="@color/colorPrimary"/>
+            android:background="@color/colorPrimary"
+            app:layout_collapseMode="pin" />
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".featureModules.login.LoginActivity"
-    android:layout_marginLeft="@dimen/dimen_20dp"
-    android:layout_marginRight="@dimen/dimen_20dp">
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="@dimen/dimen_2dp"
-        android:layout_height="@dimen/dimen_2dp"
-        android:layout_centerInParent="true"/>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_user_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/prompt_user_name"
-        android:textColorHint="@color/hint_text_color"
-        app:hintTextAppearance="@style/EditText.Hint.Blue"
-        android:layout_above="@+id/view"
-        android:layout_marginBottom="10dp">
-
-        <AutoCompleteTextView
-            android:id="@+id/et_user_name"
-            style="@style/EditText"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:imeOptions="actionDone"
-            android:paddingBottom="8dp"
-            android:singleLine="true"
-            android:text="ravindra"/>
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            tools:context=".featureModules.login.LoginActivity">
 
-    </android.support.design.widget.TextInputLayout>
+            <View
+                android:id="@+id/view"
+                android:layout_width="@dimen/dimen_2dp"
+                android:layout_height="@dimen/dimen_2dp"
+                android:layout_centerInParent="true" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/prompt_password"
-        android:textColorHint="@color/hint_text_color"
-        app:hintTextAppearance="@style/EditText.Hint.Blue"
-        android:layout_below="@+id/view"
-        android:layout_marginTop="10dp">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/view"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/prompt_user_name"
+                android:textColorHint="@color/hint_text_color"
+                app:hintTextAppearance="@style/EditText.Hint.Blue">
 
-        <AutoCompleteTextView
-            android:id="@+id/et_password"
-            style="@style/EditText"
-            android:layout_width="match_parent"
-            android:digits="0123456789"
-            android:imeOptions="actionDone"
-            android:inputType="textPassword"
-            android:paddingBottom="8dp"
-            android:singleLine="true"
-            android:text="test"/>
+                <AutoCompleteTextView
+                    android:id="@+id/et_user_name"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:imeOptions="actionDone"
+                    android:paddingBottom="8dp"
+                    android:singleLine="true"
+                    android:text="ravindra" />
 
-    </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:id="@+id/btn_sign_in"
-        style="@style/GreenButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/til_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:text="@string/btn_submit" />
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view"
+                android:layout_marginTop="10dp"
+                android:hint="@string/prompt_password"
+                android:textColorHint="@color/hint_text_color"
+                app:hintTextAppearance="@style/EditText.Hint.Blue">
 
-</RelativeLayout>
+                <AutoCompleteTextView
+                    android:id="@+id/et_password"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:digits="0123456789"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:paddingBottom="8dp"
+                    android:singleLine="true"
+                    android:text="test" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_sign_in"
+                style="@style/GreenButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/til_password"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="48dp"
+                android:text="@string/btn_submit" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

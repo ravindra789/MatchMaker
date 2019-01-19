@@ -9,5 +9,4 @@
         android:type="linear" />
 
     <size android:height="48dp" />
-
 </shape>

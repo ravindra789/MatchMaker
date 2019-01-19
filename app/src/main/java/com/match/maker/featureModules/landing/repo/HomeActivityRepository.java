@@ -27,7 +27,7 @@ public class HomeActivityRepository {
     private Util mUtil;
     private Context mContext;
     private CommonPreferences mPrefs;
-    private  MatchMakerDatabase db;
+    private MatchMakerDatabase db;
 
 
     public static HomeActivityRepository getInstance() {
@@ -50,16 +50,16 @@ public class HomeActivityRepository {
         this.db = db;
     }
 
-    public void getAllMatches(int count, final MutableLiveData<MatchingUsersTable> allMatchesData, final MutableLiveData<Throwable> allMatchesDataError){
+    public void getAllMatches(int count, final MutableLiveData<MatchingUsersTable> allMatchesData, final MutableLiveData<Throwable> allMatchesDataError) {
 
-        mRestApi.getAllMatchesDynamic(""+count).enqueue(new Callback<MatchingUsersTable>() {
+        mRestApi.getAllMatchesDynamic("" + count).enqueue(new Callback<MatchingUsersTable>() {
             @Override
             public void onResponse(Call<MatchingUsersTable> call, Response<MatchingUsersTable> response) {
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     new insertAsyncTask(db.matchingUsersDao()).execute(response.body());
                     allMatchesData.setValue(response.body());
-                }else {
+                } else {
                     allMatchesDataError.setValue(null);
                 }
 
@@ -72,11 +72,11 @@ public class HomeActivityRepository {
         });
     }
 
-    public LiveData<MatchingUsersTable> getMatchingDataFromDb(){
-       return db.matchingUsersDao().getMatchingUsersData();
+    public LiveData<MatchingUsersTable> getMatchingDataFromDb() {
+        return db.matchingUsersDao().getMatchingUsersData();
     }
 
-    public LiveData<Integer> getMatchingDataDbCount(){
+    public LiveData<Integer> getMatchingDataDbCount() {
         return db.matchingUsersDao().getMatchingUsersDataCount();
     }
 

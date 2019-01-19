@@ -16,8 +16,8 @@ public class AnimationUtil {
     private Context mContext;
 
 
-    public static AnimationUtil getInstance(){
-        if(instance == null ){
+    public static AnimationUtil getInstance() {
+        if (instance == null) {
             synchronized (AnimationUtil.class) {
                 if (instance == null) {
                     instance = new AnimationUtil();
@@ -28,23 +28,23 @@ public class AnimationUtil {
         return instance;
     }
 
-    public void setContext(Context context){
+    public void setContext(Context context) {
         mContext = context;
     }
 
     public void slideOutToLeft(View view) {
-        runSimpleAnimation( view, R.anim.slide_to_left);
+        runSimpleAnimation(view, R.anim.slide_to_left);
     }
 
     public void slideOutToRight(View view) {
         runSimpleAnimation(view, R.anim.slide_to_right);
     }
 
-    public void animateSlideRight(View view){
+    public void animateSlideRight(View view) {
         loadAnimation(view, R.anim.slide_to_right);
     }
 
-    public void animateSlideLeft(View view){
+    public void animateSlideLeft(View view) {
         loadAnimation(view, R.anim.slide_to_left);
     }
 
@@ -59,14 +59,13 @@ public class AnimationUtil {
         view.startAnimation(animation);
     }
 
-    public int returnSlideToRightAnimation(){
+    public int returnSlideToRightAnimation() {
         return R.anim.slide_to_right;
     }
 
-    public int returnSlideToLeftAnimation(){
+    public int returnSlideToLeftAnimation() {
         return R.anim.slide_to_left;
     }
-
 
 
 }

@@ -18,6 +18,7 @@ public class IntegerTypeAdapter extends TypeAdapter<Integer> {
             reader.nextNull();
             return null;
         }
+
         String stringValue = reader.nextString();
         try {
 

@@ -17,9 +17,14 @@ import com.match.maker.utils.WSConstants;
 @Database(entities = {MatchingUsersTable.class}, version = WSConstants.Db.CURRENT_DB_VERSION, exportSchema = true)
 public abstract class MatchMakerDatabase extends RoomDatabase {
 
+    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            // Since we didn't alter the table, there's nothing else to do here.
+            database.getVersion();
+        }
+    };
     private static MatchMakerDatabase INSTANCE;
-
-    public abstract MatchingUsersDao matchingUsersDao();
 
     public static MatchMakerDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
@@ -36,13 +41,7 @@ public abstract class MatchMakerDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
-        @Override
-        public void migrate(SupportSQLiteDatabase database) {
-            // Since we didn't alter the table, there's nothing else to do here.
-            database.getVersion();
-        }
-    };
+    public abstract MatchingUsersDao matchingUsersDao();
 
 
 }

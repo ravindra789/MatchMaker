@@ -16,7 +16,9 @@ import dagger.Component;
 public interface HomeActivityComponent {
 
     void inject(HomeActivity homeActivity);
+
     void inject(HomeActivityViewModel homeActivityViewModel);
+
     void inject(HomeActivityRecyclerAdapter homeActivityRecyclerAdapter);
 
 }

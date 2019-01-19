@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.No.Title">
 
-        <activity android:name=".featureModules.splash.views.SplashActivity"
+        <activity
+            android:name=".featureModules.splash.views.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,14 +32,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".featureModules.landing.views.HomeActivity"
-            android:screenOrientation="portrait"
-            android:label="Home"/>
+        <activity
+            android:name=".featureModules.landing.views.HomeActivity"
+            android:label="Home"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".featureModules.login.LoginActivity"
-            android:screenOrientation="portrait"
-            android:label="Login"/>
-
+        <activity
+            android:name=".featureModules.login.LoginActivity"
+            android:label="Login"
+            android:screenOrientation="portrait" />
 
 
     </application>

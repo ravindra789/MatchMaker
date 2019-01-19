@@ -8,15 +8,15 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animation_view"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/app_loader"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerInParent="true"
             android:background="@drawable/loader_background"
             android:elevation="@dimen/dimen_5dp"
-            android:padding="8dp">
+            android:padding="8dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/app_loader">
 
         </com.airbnb.lottie.LottieAnimationView>
 

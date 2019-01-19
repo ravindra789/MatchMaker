@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
 
         binding.toolbar.setTitle("Login");
-        binding.toolbar.setTitleTextAppearance(this,  R.style.WhiteToolBarTitleMedium);
+        binding.toolbar.setTitleTextAppearance(this, R.style.WhiteToolBarTitleMedium);
 
 
         setClickListeners();
