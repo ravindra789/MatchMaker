@@ -2,6 +2,7 @@ package com.match.maker.featureModules.landing.di;
 
 import android.content.Context;
 
+import com.match.maker.db.MatchMakerDatabase;
 import com.match.maker.di.scopes.UserScope;
 import com.match.maker.featureModules.landing.repo.HomeActivityRepository;
 import com.match.maker.featureModules.landing.repo.HomeActivityRestApi;
@@ -30,10 +31,11 @@ public class HomeActivityModule {
 
     @Provides
     @UserScope
-    HomeActivityRepository provideHomeActivityRepository(HomeActivityRestApi homeActivityRestApi, Util util , Context context, CommonPreferences prefs){
+    HomeActivityRepository provideHomeActivityRepository(HomeActivityRestApi homeActivityRestApi, Util util , Context context, CommonPreferences prefs,
+                                                         MatchMakerDatabase db){
 
         HomeActivityRepository homeActivityRepository = HomeActivityRepository.getInstance();
-        homeActivityRepository.setVariables(homeActivityRestApi, util, context, prefs);
+        homeActivityRepository.setVariables(homeActivityRestApi, util, context, prefs, db);
 
         return homeActivityRepository;
 

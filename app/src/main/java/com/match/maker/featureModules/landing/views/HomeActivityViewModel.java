@@ -5,7 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.match.maker.featureModules.landing.models.MatchingUsersResponse;
+import com.match.maker.db.tables.MatchingUsersTable;
 import com.match.maker.featureModules.landing.repo.HomeActivityRepository;
 
 import javax.inject.Inject;
@@ -21,7 +21,7 @@ public class HomeActivityViewModel extends AndroidViewModel {
 
 
     // get matches result
-    private MutableLiveData<MatchingUsersResponse> allMatchesData = new MutableLiveData<>();
+    private MutableLiveData<MatchingUsersTable> allMatchesData = new MutableLiveData<>();
     private MutableLiveData<Throwable> allMatchesDataError = new MutableLiveData<>();
 
 
@@ -33,7 +33,7 @@ public class HomeActivityViewModel extends AndroidViewModel {
     public void getAllMatches(int count){
          repository.getAllMatches(count, allMatchesData, allMatchesDataError);
     }
-    public MutableLiveData<MatchingUsersResponse> getAllMatchesData() {
+    public MutableLiveData<MatchingUsersTable> getAllMatchesData() {
         return allMatchesData;
     }
     public MutableLiveData<Throwable> getAllMatchesDataError() {

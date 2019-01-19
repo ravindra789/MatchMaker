@@ -1,12 +1,15 @@
 package com.match.maker.di.module;
 
 import android.app.Application;
+import android.arch.persistence.room.Room;
 import android.content.Context;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.match.maker.common.IntegerTypeAdapter;
+import com.match.maker.db.MatchMakerDatabase;
+import com.match.maker.di.DatabaseInfo;
 import com.match.maker.preferences.CommonPreferences;
 import com.match.maker.utils.AnimationUtil;
 import com.match.maker.utils.Urls;
@@ -76,12 +79,19 @@ public class ApplicationModule {
         return gson;
     }
 
-   /* @Provides
+    @Provides
     @Singleton
     public MatchMakerDatabase provideAppDatabase(@DatabaseInfo String dbName, Context context) {
         return Room.databaseBuilder(context, MatchMakerDatabase.class, dbName).fallbackToDestructiveMigration()
                 .build();
-    }*/
+    }
+
+    @Provides
+    @DatabaseInfo
+    public String provideDatabaseName() {
+        return WSConstants.Db.DATABASE_NAME;
+    }
+
 
     @Provides
     @Singleton

@@ -1,4 +1,4 @@
-package com.match.maker.db;
+package com.match.maker.di;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

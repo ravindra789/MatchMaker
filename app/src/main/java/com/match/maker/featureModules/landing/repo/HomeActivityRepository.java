@@ -1,9 +1,13 @@
 package com.match.maker.featureModules.landing.repo;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
+import android.os.AsyncTask;
 
-import com.match.maker.featureModules.landing.models.MatchingUsersResponse;
+import com.match.maker.db.MatchMakerDatabase;
+import com.match.maker.db.tables.MatchingUsersTable;
+import com.match.maker.featureModules.landing.db.MatchingUsersDao;
 import com.match.maker.preferences.CommonPreferences;
 import com.match.maker.utils.Util;
 
@@ -23,6 +27,7 @@ public class HomeActivityRepository {
     private Util mUtil;
     private Context mContext;
     private CommonPreferences mPrefs;
+    private  MatchMakerDatabase db;
 
 
     public static HomeActivityRepository getInstance() {
@@ -37,21 +42,22 @@ public class HomeActivityRepository {
         return instance;
     }
 
-    public void setVariables(HomeActivityRestApi restApi, Util util, Context context, CommonPreferences prefs) {
+    public void setVariables(HomeActivityRestApi restApi, Util util, Context context, CommonPreferences prefs, MatchMakerDatabase db) {
         mRestApi = restApi;
         mUtil = util;
         mContext = context;
         mPrefs = prefs;
-        //this.db = db;
+        this.db = db;
     }
 
-    public void getAllMatches(int count, final MutableLiveData<MatchingUsersResponse> allMatchesData, final MutableLiveData<Throwable> allMatchesDataError){
+    public void getAllMatches(int count, final MutableLiveData<MatchingUsersTable> allMatchesData, final MutableLiveData<Throwable> allMatchesDataError){
 
-        mRestApi.getAllMatches().enqueue(new Callback<MatchingUsersResponse>() {
+        mRestApi.getAllMatchesDynamic(""+count).enqueue(new Callback<MatchingUsersTable>() {
             @Override
-            public void onResponse(Call<MatchingUsersResponse> call, Response<MatchingUsersResponse> response) {
+            public void onResponse(Call<MatchingUsersTable> call, Response<MatchingUsersTable> response) {
 
                 if(response.isSuccessful()){
+                    new insertAsyncTask(db.matchingUsersDao()).execute(response.body());
                     allMatchesData.setValue(response.body());
                 }else {
                     allMatchesDataError.setValue(null);
@@ -60,10 +66,30 @@ public class HomeActivityRepository {
             }
 
             @Override
-            public void onFailure(Call<MatchingUsersResponse> call, Throwable t) {
+            public void onFailure(Call<MatchingUsersTable> call, Throwable t) {
                 allMatchesDataError.setValue(t);
             }
         });
+    }
+
+    public LiveData<MatchingUsersTable> getMatchingDataFromDb(){
+       return db.matchingUsersDao().getMatchingUsersData();
+    }
+
+
+    private static class insertAsyncTask extends AsyncTask<MatchingUsersTable, Void, Void> {
+
+        private MatchingUsersDao matchingUsersDao;
+
+        insertAsyncTask(MatchingUsersDao dao) {
+            matchingUsersDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(MatchingUsersTable... params) {
+            matchingUsersDao.insert(params[0]);
+            return null;
+        }
     }
 
 }

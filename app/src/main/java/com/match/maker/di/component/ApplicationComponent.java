@@ -2,6 +2,7 @@ package com.match.maker.di.component;
 
 import android.content.Context;
 
+import com.match.maker.db.MatchMakerDatabase;
 import com.match.maker.di.module.ApplicationModule;
 import com.match.maker.preferences.CommonPreferences;
 import com.match.maker.utils.AnimationUtil;
@@ -27,7 +28,7 @@ public interface ApplicationComponent {
     CommonPreferences providesSharedPreferences();
     Util provideUtility();
     AnimationUtil provideAnimation();
-    /*MatchMakerDatabase provideAppDatabase();*/
+    MatchMakerDatabase provideAppDatabase();
 
 
 
