@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="primary_text_color">#FF304B69</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="hint_text_color">#99304B69</color>
+    <color name="hint_focused_text_color">#FF296BE8</color>
+
+    <color name="white">#fff</color>
+
+
+    //grey color shades
+    <color name="colorPrimaryGrey">#FF304B69</color>
+    <color name="colorPrimaryGreyOPACITY60">#99304B69</color>
+    <color name="colorPrimaryGreyOPACITY40">#64304B69</color>
+    <color name="colorPrimaryGreyOPACITY50">#80304B69</color>
+    <color name="colorPrimaryGreyOPACITY8">#14304B69</color>
+    <color name="colorPrimaryGreyOPACITY10">#1A304B69</color>
+    <color name="colorPrimaryGreyOPACITY15">#26304B69</color>
+    <color name="colorPrimaryGreyOPACITY80">#CC304B69</color>
+    <color name="colorPrimaryGreyOPACITY45">#66304B69</color>
+
+</resources>

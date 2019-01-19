@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Match Maker</string>
+
+    //login activity
+    <string name="prompt_user_name">User Name</string>
+    <string name="prompt_password">Password</string>
+    <string name="btn_submit">Submit</string>
+    <string name="no_data">NO DATA</string>
+
+</resources>

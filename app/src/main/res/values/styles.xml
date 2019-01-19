@@ -1,0 +1,98 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.No.Title" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:dropDownListViewStyle">@style/popup</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/hint_text_color</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_left_arrow_white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="actionOverflowButtonStyle">@style/OverFlowWhite</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
+        <item name="android:textAppearanceLargePopupMenu">@style/myPopupMenuTextAppearanceLarge</item>
+        <item name="android:textAppearanceSmallPopupMenu">@style/myPopupMenuTextAppearanceSmall</item>
+        <item name="android:listPreferredItemHeightSmall">36dp</item>
+        <item name="android:listPreferredItemHeightLarge">36dp</item>
+        <item name="android:listDivider">@color/colorPrimaryGreyOPACITY10</item>
+
+    </style>
+
+    <style name="myPopupMenuTextAppearanceSmall" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small">
+        <item name="android:textColor">@color/colorPrimaryGrey</item>
+        <item name="android:textSize">@dimen/dimen_12sp</item>
+    </style>
+
+    <style name="myPopupMenuTextAppearanceLarge" parent="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large">
+        <item name="android:textColor">@color/colorPrimaryGrey</item>
+        <item name="android:textSize">@dimen/dimen_12sp</item>
+    </style>
+
+    <style name="Widget.Design.CoordinatorLayout" parent="@style/Widget.Support.CoordinatorLayout">
+        <item name="statusBarBackground">?attr/colorPrimaryDark</item>
+    </style>
+
+    <style name="popup" parent="Widget.AppCompat.ListView.DropDown">
+        <item name="android:divider">@color/colorPrimaryGreyOPACITY10</item>
+        <item name="android:dividerHeight">2dp</item>
+        <item name="android:textColor">@color/colorPrimaryGrey</item>
+        <item name="android:itemBackground">@android:color/white</item>
+    </style>
+
+    <style name="OverFlowWhite" parent="@style/Widget.AppCompat.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_more_white</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:layout_height">@dimen/standard_height_of_et_inside_til</item>
+        <item name="android:textSize">@dimen/text_size</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/primary_text_color</item>
+        <item name="android:backgroundTint">@color/colorPrimaryGreyOPACITY40</item>
+        <item name="android:imeOptions">actionDone</item>
+        <item name="android:singleLine">true</item>
+
+    </style>
+
+    <style name="EditText.Hint.Blue" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="android:textColor">@color/hint_focused_text_color</item>
+    </style>
+
+    <style name="GreenButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/green_gradient_background_standard_button</item>
+        <item name="android:foreground">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="TextStyle">
+        <item name="android:textSize">@dimen/dimen_12sp</item>
+    </style>
+
+    <style name="TextStyle.Medium.Op60.S12" parent="TextStyle">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">@dimen/dimen_12sp</item>
+        <item name="android:textColor">@color/colorPrimaryGreyOPACITY60</item>
+    </style>
+
+    <style name="WhiteToolBarTitleMedium">
+        <item name="android:textSize">@dimen/dimen_18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+</resources>

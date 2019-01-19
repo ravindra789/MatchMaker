@@ -1,0 +1,33 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "7709d53bd87484f6a8dfad738c8beb1c",
+    "entities": [
+      {
+        "tableName": "matching_user_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`mobile_number` INTEGER NOT NULL, PRIMARY KEY(`mobile_number`))",
+        "fields": [
+          {
+            "fieldPath": "primaryMobileNumber",
+            "columnName": "mobile_number",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "mobile_number"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"7709d53bd87484f6a8dfad738c8beb1c\")"
+    ]
+  }
+}
