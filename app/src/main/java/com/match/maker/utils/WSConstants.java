@@ -10,7 +10,7 @@ public class WSConstants {
     public static final String GSON_OF_GOOGLE = "google_gson";
 
     public class Db {
-        public static final String DATABASE_NAME = "consumer_database";
+        public static final String DATABASE_NAME = "match_maker_database";
         public static final int CURRENT_DB_VERSION = 1;
     }
 
