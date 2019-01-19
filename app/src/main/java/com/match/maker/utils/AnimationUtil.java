@@ -2,6 +2,7 @@ package com.match.maker.utils;
 
 import android.content.Context;
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.match.maker.R;
@@ -39,10 +40,23 @@ public class AnimationUtil {
         runSimpleAnimation(view, R.anim.slide_to_right);
     }
 
+    public void animateSlideRight(View view){
+        loadAnimation(view, R.anim.slide_to_right);
+    }
+
+    public void animateSlideLeft(View view){
+        loadAnimation(view, R.anim.slide_to_left);
+    }
+
     private void runSimpleAnimation(View view, int animationId) {
         view.startAnimation(AnimationUtils.loadAnimation(
                 mContext, animationId
         ));
+    }
+
+    private void loadAnimation(View view, int animationId) {
+        Animation animation = AnimationUtils.loadAnimation(mContext, animationId);
+        view.startAnimation(animation);
     }
 
     public int returnSlideToRightAnimation(){
