@@ -2,6 +2,7 @@ package com.match.maker.featureModules.landing.views;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
@@ -39,4 +40,15 @@ public class HomeActivityViewModel extends AndroidViewModel {
     public MutableLiveData<Throwable> getAllMatchesDataError() {
         return allMatchesDataError;
     }
+
+    //
+    public LiveData<MatchingUsersTable> getDataFromDb(){
+       return repository.getMatchingDataFromDb();
+    }
+
+    //
+    public LiveData<Integer> getDbDataCount(){
+        return repository.getMatchingDataDbCount();
+    }
+
 }

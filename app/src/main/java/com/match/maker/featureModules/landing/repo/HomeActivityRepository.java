@@ -76,6 +76,9 @@ public class HomeActivityRepository {
        return db.matchingUsersDao().getMatchingUsersData();
     }
 
+    public LiveData<Integer> getMatchingDataDbCount(){
+        return db.matchingUsersDao().getMatchingUsersDataCount();
+    }
 
     private static class insertAsyncTask extends AsyncTask<MatchingUsersTable, Void, Void> {
 
