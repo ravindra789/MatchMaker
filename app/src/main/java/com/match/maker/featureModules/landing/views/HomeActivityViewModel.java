@@ -9,6 +9,8 @@ import android.support.annotation.NonNull;
 import com.match.maker.db.tables.MatchingUsersTable;
 import com.match.maker.featureModules.landing.repo.HomeActivityRepository;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 /**
@@ -24,6 +26,12 @@ public class HomeActivityViewModel extends AndroidViewModel {
     // get matches result
     private MutableLiveData<MatchingUsersTable> allMatchesData = new MutableLiveData<>();
     private MutableLiveData<Throwable> allMatchesDataError = new MutableLiveData<>();
+
+    //
+    private MutableLiveData<List<MatchingUsersTable>> matchingUsersTableLiveData = new MutableLiveData<>();
+
+    //
+    private MutableLiveData<Integer> dbCount = new MutableLiveData<>();
 
 
     public HomeActivityViewModel(@NonNull Application application) {
@@ -44,13 +52,18 @@ public class HomeActivityViewModel extends AndroidViewModel {
     }
 
     //
-    public LiveData<MatchingUsersTable> getDataFromDb() {
-        return repository.getMatchingDataFromDb();
+    public void  getDataFromDb() {
+        repository.getMatchingDataFromDb(matchingUsersTableLiveData);
+    }
+    public LiveData<List<MatchingUsersTable>> getMatchingUsersTableLiveData() {
+        return matchingUsersTableLiveData;
     }
 
     //
-    public LiveData<Integer> getDbDataCount() {
-        return repository.getMatchingDataDbCount();
+    public void getDbDataCount() {
+        repository.getMatchingDataDbCount(dbCount);
     }
-
+    public MutableLiveData<Integer> getDbCount() {
+        return dbCount;
+    }
 }

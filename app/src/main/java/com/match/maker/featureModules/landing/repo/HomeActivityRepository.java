@@ -1,6 +1,5 @@
 package com.match.maker.featureModules.landing.repo;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -10,6 +9,8 @@ import com.match.maker.db.tables.MatchingUsersTable;
 import com.match.maker.featureModules.landing.db.MatchingUsersDao;
 import com.match.maker.preferences.CommonPreferences;
 import com.match.maker.utils.Util;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -72,12 +73,12 @@ public class HomeActivityRepository {
         });
     }
 
-    public LiveData<MatchingUsersTable> getMatchingDataFromDb() {
-        return db.matchingUsersDao().getMatchingUsersData();
+    public void getMatchingDataFromDb(MutableLiveData<List<MatchingUsersTable>> matchingUsersTableLiveData) {
+        matchingUsersTableLiveData.setValue(db.matchingUsersDao().getMatchingUsersData());
     }
 
-    public LiveData<Integer> getMatchingDataDbCount() {
-        return db.matchingUsersDao().getMatchingUsersDataCount();
+    public void getMatchingDataDbCount(MutableLiveData<Integer> dbCount) {
+        dbCount.setValue(db.matchingUsersDao().getMatchingUsersDataCount());
     }
 
     private static class insertAsyncTask extends AsyncTask<MatchingUsersTable, Void, Void> {

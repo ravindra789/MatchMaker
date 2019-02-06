@@ -88,21 +88,6 @@ public class HomeActivityRecyclerAdapter extends RecyclerView.Adapter<HomeActivi
                     .into(holder.binding.imgProfile);
 
 
-            holder.binding.btnConnect.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    deleteItem(position, holder.binding.cardView, 0);
-                }
-            });
-
-            holder.binding.btnDecline.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    deleteItem(position, holder.binding.cardView, 1);
-                }
-            });
-
-
         }
 
 
@@ -142,6 +127,22 @@ public class HomeActivityRecyclerAdapter extends RecyclerView.Adapter<HomeActivi
         public MyViewHolder(RecyclerAdapterHomeActivityBinding recyclerAdapterHomeActivityBinding) {
             super(recyclerAdapterHomeActivityBinding.getRoot());
             binding = recyclerAdapterHomeActivityBinding;
+
+
+            binding.btnConnect.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteItem(getAdapterPosition(), binding.cardView, 0);
+                }
+            });
+
+            binding.btnDecline.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteItem(getAdapterPosition(), binding.cardView, 1);
+                }
+            });
+
         }
     }
 
