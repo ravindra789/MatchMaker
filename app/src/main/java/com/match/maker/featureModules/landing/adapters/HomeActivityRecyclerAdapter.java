@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.match.maker.R;
 import com.match.maker.databinding.RecyclerAdapterHomeActivityBinding;
+import com.match.maker.featureModules.landing.models.Location;
+import com.match.maker.featureModules.landing.models.Name;
 import com.match.maker.featureModules.landing.models.Result;
 import com.match.maker.utils.AnimationUtil;
 
@@ -49,35 +51,10 @@ public class HomeActivityRecyclerAdapter extends RecyclerView.Adapter<HomeActivi
 
         if (data != null) {
 
-            if (data.getRegistered().getAge() == 0) {
-                holder.binding.txtCardTime.setText("Moments Ago.");
-            } else if (data.getRegistered().getAge() < 5) {
-                holder.binding.txtCardTime.setText("Few Hours Ago.");
-            } else {
-                holder.binding.txtCardTime.setText("" + data.getRegistered().getAge() + " Hours Ago.");
-            }
-
-            String tempTitle = data.getName().getTitle();
-            String title = tempTitle.substring(0, 1).toUpperCase() + tempTitle.substring(1);
-
-            String tempFirstName = data.getName().getFirst();
-            String FirstName = tempFirstName.substring(0, 1).toUpperCase() + tempFirstName.substring(1);
-
-            String tempLastName = data.getName().getLast();
-            String LastName = tempLastName.substring(0, 1).toUpperCase() + tempLastName.substring(1);
-
-            holder.binding.txtUserName.setText(title + " " + FirstName + " " + LastName);
-
-
-            String gender;
-            if (data.getGender().equalsIgnoreCase("male")) {
-                gender = "Male";
-            } else {
-                gender = "Female";
-            }
-            holder.binding.txtUserPersonalDescription.setText("" + gender + ", " + data.getDob().getAge() + " Years");
-
-            holder.binding.txtUserProfessionalDescription.setText("" + data.getLocation().getCity() + ", " + data.getLocation().getState());
+            holder.binding.txtCardTime.setText(setTimeStatus(data.getRegistered().getAge()));
+            holder.binding.txtUserName.setText(formatUserName(data.getName()));
+            holder.binding.txtUserPersonalDescription.setText(formatPersonalDescription(data));
+            holder.binding.txtUserProfessionalDescription.setText(formatProfessionalDetails(data.getLocation()));
 
 
             RequestOptions requestOptions = new RequestOptions();
@@ -91,6 +68,66 @@ public class HomeActivityRecyclerAdapter extends RecyclerView.Adapter<HomeActivi
         }
 
 
+    }
+
+    private String formatProfessionalDetails(Location location) {
+
+        String details;
+
+        details = "" + location.getCity() + ", " + location.getState();
+
+        return details;
+
+    }
+
+    private String formatPersonalDescription(Result data) {
+
+        String description;
+
+        String gender;
+        if (data.getGender().equalsIgnoreCase("male")) {
+            gender = "Male";
+        } else {
+            gender = "Female";
+        }
+        description = "" + gender + ", " + data.getDob().getAge() + " Years";
+
+
+        return description;
+    }
+
+    private String formatUserName(Name name) {
+
+        String formattedName;
+
+        String tempTitle = name.getTitle();
+        String title = tempTitle.substring(0, 1).toUpperCase() + tempTitle.substring(1);
+
+        String tempFirstName = name.getFirst();
+        String FirstName = tempFirstName.substring(0, 1).toUpperCase() + tempFirstName.substring(1);
+
+        String tempLastName = name.getLast();
+        String LastName = tempLastName.substring(0, 1).toUpperCase() + tempLastName.substring(1);
+
+        formattedName = title + " " + FirstName + " " + LastName;
+
+
+        return formattedName;
+    }
+
+    private String setTimeStatus(Integer age) {
+
+        String status;
+
+        if (age == 0) {
+            status = "Moments Ago.";
+        } else if (age < 5) {
+            status = "Few Hours Ago.";
+        } else {
+            status = "" + age + " Hours Ago.";
+        }
+
+        return status;
     }
 
     public void updateData(List<Result> results) {
