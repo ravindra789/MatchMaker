@@ -68,11 +68,12 @@ public class HomeActivity extends AppCompatActivity {
         setAdapter();
         setObservers();
         setClickListeners();
+        callAllMatchesAPI(50);
 
-
-        viewModel.getAllMatches(50);
-
-
+    }
+    
+    private void callAllMatchesAPI(int count){
+        viewModel.getAllMatches(count);
     }
 
     @Override
@@ -108,7 +109,7 @@ public class HomeActivity extends AppCompatActivity {
         binding.pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                viewModel.getAllMatches(50);
+                callAllMatchesAPI(50);
             }
         });
 
