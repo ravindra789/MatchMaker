@@ -1,10 +1,12 @@
 package com.match.maker.featureModules.landing.views;
 
+import android.Manifest;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +25,8 @@ import com.match.maker.featureModules.landing.di.DaggerHomeActivityComponent;
 import com.match.maker.featureModules.landing.di.HomeActivityComponent;
 import com.match.maker.featureModules.login.LoginActivity;
 import com.match.maker.preferences.CommonPreferences;
+import com.match.maker.utils.PermissionResult;
+import com.match.maker.utils.PermissionUtils;
 import com.match.maker.utils.Util;
 
 import javax.inject.Inject;
@@ -96,16 +100,14 @@ public class HomeActivity extends AppCompatActivity {
         permissionUtils.askCompactMultiplePermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, new PermissionResult() {
             @Override
             public void permissionGranted() {
-                appUtils.showShortToast("Permissions Granted");
             }
 
             @Override
             public void permissionDenied() {
-                appUtils.showShortToast("Permissions Denied");
+
             }
             @Override
             public void permissionForeverDenied() {
-                appUtils.showShortToast("Permissions Denied Forever");
                 //permissionUtils.openSettingsApp(HomeActivity.this);
             }
         });
