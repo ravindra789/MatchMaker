@@ -12,6 +12,7 @@ import com.match.maker.db.MatchMakerDatabase;
 import com.match.maker.di.DatabaseInfo;
 import com.match.maker.preferences.CommonPreferences;
 import com.match.maker.utils.AnimationUtil;
+import com.match.maker.utils.PermissionUtils;
 import com.match.maker.utils.Urls;
 import com.match.maker.utils.Util;
 import com.match.maker.utils.WSConstants;
