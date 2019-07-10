@@ -118,5 +118,12 @@ public class ApplicationModule {
         animationUtil.setContext(context);
         return animationUtil;
     }
+    
+     @Provides
+    @Singleton
+    public PermissionUtils providePermissionUtils() {
+        PermissionUtils permissionUtils = PermissionUtils.getInstance();
+        return permissionUtils;
+    }
 
 }
