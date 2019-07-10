@@ -38,6 +38,9 @@ public class HomeActivity extends AppCompatActivity {
 
     @Inject
     CommonPreferences prefs;
+    
+    @Inject
+    PermissionUtils permissionUtils;
 
     private ActivityHomeBinding binding;
     private HomeActivityRecyclerAdapter homeActivityRecyclerAdapter;
@@ -56,6 +59,8 @@ public class HomeActivity extends AppCompatActivity {
                 .build();
         homeActivityComponent.inject(this);
         homeActivityComponent.inject(viewModel);
+        
+        permissionUtils.setActivityContext(this);
 
         binding.toolbar.setTitle("Home");
         binding.toolbar.setTitleTextAppearance(this, R.style.WhiteToolBarTitleMedium);
@@ -69,6 +74,41 @@ public class HomeActivity extends AppCompatActivity {
         setObservers();
         setClickListeners();
         callAllMatchesAPI(50);
+        checkPermissions();
+
+    }
+    
+    private void checkPermissions() {
+
+        boolean isPermissionsGranted = permissionUtils.isMultiplePermissionsGranted(HomeActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA});
+
+        if(isPermissionsGranted){
+
+        }else {
+            askPermissions();
+        }
+
+    }
+    
+     // Need to use if using Permission util
+    private void askPermissions() {
+
+        permissionUtils.askCompactMultiplePermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, new PermissionResult() {
+            @Override
+            public void permissionGranted() {
+                appUtils.showShortToast("Permissions Granted");
+            }
+
+            @Override
+            public void permissionDenied() {
+                appUtils.showShortToast("Permissions Denied");
+            }
+            @Override
+            public void permissionForeverDenied() {
+                appUtils.showShortToast("Permissions Denied Forever");
+                //permissionUtils.openSettingsApp(HomeActivity.this);
+            }
+        });
 
     }
     
@@ -91,6 +131,12 @@ public class HomeActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    
+     // Need to set this if using Permission util
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        permissionUtils.checkRequestedPermissionResult(requestCode, permissions, grantResults);
     }
 
     private void logOut() {
