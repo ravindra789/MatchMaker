@@ -32,6 +32,8 @@ public interface ApplicationComponent {
     Util provideUtility();
 
     AnimationUtil provideAnimation();
+    
+    PermissionUtils providePermissionUtils();
 
     MatchMakerDatabase provideAppDatabase();
 
