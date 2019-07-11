@@ -108,10 +108,32 @@ android {
 
     }
 
+    applicationVariants.all { variant ->
+        renameAPK(variant)
+    }
+
     dataBinding {
         enabled = true
     }
 
+}
+
+def renameAPK(variant) {
+    variant.outputs.all { output ->
+        def buildType = variant.variantData.variantConfiguration.buildType.name
+        def fileName = assignNewBuildTypeName(buildType) + " v" + variant.versionName + ".apk"
+        outputFileName = fileName
+    }
+}
+
+def assignNewBuildTypeName(String buildType) {
+    def newBuildTypeName = ""
+    if (buildType == "debug") {
+        newBuildTypeName = "MatchMaker UAT"
+    } else if (buildType == "release") {
+        newBuildTypeName = "MatchMaker LIVE"
+    }
+    return newBuildTypeName
 }
 
 dependencies {
