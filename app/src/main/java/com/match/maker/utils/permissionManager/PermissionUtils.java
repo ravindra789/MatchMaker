@@ -1,4 +1,4 @@
-package com.match.maker.utils;
+package com.match.maker.utils.permissionManager;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+
+import com.match.maker.utils.WSConstants;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

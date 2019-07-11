@@ -2,6 +2,29 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+
+
+    //Variables
+    def STRING = "String"
+    def INT = "int"
+    def VARIABLE_BASE_URL = "BASE_URL"
+    def VARIABLE_APP_ENVIRONMENT = "APP_ENVIRONMENT"
+    def VARIABLE_DATABASE_VERSION = "DATABASE_VERSION"
+
+    //Values
+    def VALUE_APP_ENVIRONMENT_UAT = '"UAT"'
+    def VALUE_APP_ENVIRONMENT_LIVE = '"LIVE"'
+
+    def VALUE_BASE_URL_UAT = '"https://randomuser.me"'
+    def VALUE_BASE_URL_LIVE = '"https://randomuser.me"'
+
+    def VALUE_DATABASE_VERSION_UAT = '1'
+    def VALUE_DATABASE_VERSION_LIVE = '1'
+
+    def KEY_PASSWORD = '"matchMakerandroid"'
+    def KEYSTORE_PASSWORD = '"matchMakerandroid"'
+
+
     defaultConfig {
         applicationId "com.match.maker"
         minSdkVersion 19
@@ -19,12 +42,72 @@ android {
         }
 
     }
-    buildTypes {
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4G"
+    }
+
+    signingConfigs {
+
+        /* debug {
+            keyAlias 'matchMakerDebug'
+            keyPassword KEY_PASSWORD
+            storeFile file('../keystoreRelease/matchMakerDebug.keystore')
+            storePassword KEYSTORE_PASSWORD
+            //Organisation - matchmaker
+        }*/
+
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            keyAlias 'matchMaker'
+            keyPassword KEY_PASSWORD
+            storeFile file('../keystoreRelease/matchMakerRelease.keystore')
+            storePassword KEYSTORE_PASSWORD
+            //Organisation - matchmaker
         }
     }
+
+    buildTypes {
+
+        debug {
+            applicationIdSuffix ".debug"
+            minifyEnabled false
+            debuggable true
+            zipAlignEnabled true
+            versionNameSuffix "1.0.0"
+            buildConfigField STRING, VARIABLE_BASE_URL, VALUE_BASE_URL_UAT
+            buildConfigField INT, VARIABLE_DATABASE_VERSION, VALUE_DATABASE_VERSION_UAT
+            buildConfigField STRING, VARIABLE_APP_ENVIRONMENT, VALUE_APP_ENVIRONMENT_UAT
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            manifestPlaceholders = [
+                    appIcon     : "@mipmap/ic_launcher",
+                    appRoundIcon: "@mipmap/ic_launcher_round"
+            ]
+        }
+
+        release {
+            minifyEnabled true
+            debuggable false
+            zipAlignEnabled true
+            versionNameSuffix "1.0.0"
+            buildConfigField STRING, VARIABLE_BASE_URL, VALUE_BASE_URL_LIVE
+            buildConfigField INT, VARIABLE_DATABASE_VERSION, VALUE_DATABASE_VERSION_LIVE
+            buildConfigField STRING, VARIABLE_APP_ENVIRONMENT, VALUE_APP_ENVIRONMENT_LIVE
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            manifestPlaceholders = [
+                    appIcon     : "@mipmap/ic_launcher",
+                    appRoundIcon: "@mipmap/ic_launcher_round"
+            ]
+        }
+
+    }
+
     dataBinding {
         enabled = true
     }

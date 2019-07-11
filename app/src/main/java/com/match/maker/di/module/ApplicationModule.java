@@ -7,13 +7,13 @@ import android.content.Context;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.match.maker.BuildConfig;
 import com.match.maker.common.IntegerTypeAdapter;
 import com.match.maker.db.MatchMakerDatabase;
 import com.match.maker.di.DatabaseInfo;
 import com.match.maker.preferences.CommonPreferences;
 import com.match.maker.utils.AnimationUtil;
-import com.match.maker.utils.PermissionUtils;
-import com.match.maker.utils.Urls;
+import com.match.maker.utils.permissionManager.PermissionUtils;
 import com.match.maker.utils.Util;
 import com.match.maker.utils.WSConstants;
 
@@ -53,7 +53,7 @@ public class ApplicationModule {
     public Retrofit provideRetrofitWithoutHeaders(@Named(WSConstants.GSON_OF_GOOGLE) Gson gson) {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Urls.ROOT_URL)
+                .baseUrl(BuildConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 

@@ -1,4 +1,4 @@
-package com.match.maker.utils;
+package com.match.maker.utils.permissionManager;
 
 /**
  * Created by RavindraP on 09,July,2019

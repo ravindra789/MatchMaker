@@ -25,8 +25,8 @@ import com.match.maker.featureModules.landing.di.DaggerHomeActivityComponent;
 import com.match.maker.featureModules.landing.di.HomeActivityComponent;
 import com.match.maker.featureModules.login.LoginActivity;
 import com.match.maker.preferences.CommonPreferences;
-import com.match.maker.utils.PermissionResult;
-import com.match.maker.utils.PermissionUtils;
+import com.match.maker.utils.permissionManager.PermissionResult;
+import com.match.maker.utils.permissionManager.PermissionUtils;
 import com.match.maker.utils.Util;
 
 import javax.inject.Inject;

@@ -6,7 +6,7 @@ import com.match.maker.db.MatchMakerDatabase;
 import com.match.maker.di.module.ApplicationModule;
 import com.match.maker.preferences.CommonPreferences;
 import com.match.maker.utils.AnimationUtil;
-import com.match.maker.utils.PermissionUtils;
+import com.match.maker.utils.permissionManager.PermissionUtils;
 import com.match.maker.utils.Util;
 
 import javax.inject.Named;
